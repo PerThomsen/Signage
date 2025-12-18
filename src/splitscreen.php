@@ -23,7 +23,7 @@
   <!--Main layout-->
   <main class="my-2">
     <div class="container">
-      <!--Section: Content-->
+      <!--Section: Content -->
       <section class="text-center">
 
         <div class="row">
