@@ -56,7 +56,7 @@
 
 
       <div class="row">
-      <!--<hr class="m-5" />-->
+        <hr class="m-5" />
       </div>
 
         <div class="row">
