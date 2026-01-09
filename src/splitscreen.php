@@ -35,19 +35,20 @@
               </div>
               <div class="card-body">
                 <p>&nbsp</p>
-                <div class="box1">Dynamisk kalender </div>
+                <div class="box2"><h1 id="real-time-clock"></h1></div>
                 <p>&nbsp</p>
-                <div class="box2">Dags dato</div>
+                <div class="box1">Dynamisk kalender (kun hvis udfyldt></div>
                 <p>&nbsp</p>
                 <div class="box3">Besøg af (kun hvis udfyldt></div>
                 <p>&nbsp</p>
-                <div class="box4">Vi arbejder hjemme i dag</div>
+                <div class="box4">Vi arbejder hjemme i dag (kun hvis aktiv></div>
                 <p>&nbsp</p>
 
-                <?php include "slider.php" ?>
-                <h1 class="card-title">12. december arbejder vi alle hjemmefra</h1>
+                <?php include "inc/slider.php" ?>
+                <p>&nbsp;</p>
+                <h1 class="card-title">Kontaktinfo:</h1>
                 <p class="card-text">
-                <h3>Du kan kontakte os på tlf. 44 34 90 00<br /> eller mail@monacor.dk<br />Pakker kan stilles i opgang under trappen</h3>
+                <h3>Tlf. 44 34 90 00<br /> eller mail@monacor.dk<br />Pakker kan stilles i opgang under trappen</h3>
                 </p>
               </div>
             </div>
@@ -86,7 +87,37 @@
 
 
     <script>
-      //
+      //https://dev.to/msnmongare/displaying-real-time-day-date-and-time-in-a-custom-format-using-javascript-5did
+      function updateDateTime() {
+          const clockElement = document.getElementById('real-time-clock');
+          const currentTime = new Date();
+
+          // Define arrays for days of the week and months to format the day and month names.
+          const daysOfWeek = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
+          const dayOfWeek = daysOfWeek[currentTime.getDay()];
+
+          const months = ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'july', 'august', 'september', 'oktober', 'november', 'december'];
+          const month = months[currentTime.getMonth()];
+
+          const day = currentTime.getDate();
+          const year = currentTime.getFullYear();
+
+          // Calculate and format hours (in 12-hour format), minutes, seconds, and AM/PM.
+          let hours = currentTime.getHours();
+          //hours = hours % 12 || 12;
+          const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+          const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+
+          // Construct the date and time string in the desired format.
+          const dateTimeString = `${dayOfWeek} ${day}. ${month} ${year} - ${hours}:${minutes}:${seconds}`;
+          clockElement.textContent = dateTimeString;
+      }
+
+      // Update the date and time every second (1000 milliseconds).
+      setInterval(updateDateTime, 1000);
+
+      // Initial update.
+      updateDateTime();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>    
   </body>

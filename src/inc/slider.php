@@ -1,0 +1,52 @@
+<?php
+  # Billeder størrelser
+  # Org: 1100 x 500
+  # Fix: 970 * 441
+?>
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/01.png" alt="Los Angeles" class="d-block" style="width:100%">
+      <div class="carousel-caption">
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="img/03.png" alt="Chicago" class="d-block" style="width:100%">
+      <div class="carousel-caption">
+        <!--
+        <h3>Chicago</h3>
+        <p>Thank you, Chicago!</p>
+        -->
+      </div> 
+    </div>
+    <div class="carousel-item">
+      <img src="img/04.png" alt="New York" class="d-block" style="width:100%">
+      <div class="carousel-caption">
+        <!--
+        <h3>New York</h3>
+        <p>We love the Big Apple!</p>
+        -->
+      </div>  
+    </div>
+  </div>
+
+  <!-- Left and right controls/icons -->
+  <!--
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+  -->
+</div>
