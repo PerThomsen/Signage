@@ -16,5 +16,14 @@
   //$database = new DB();
   $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 
+  define( 'DB_HOST', HOST ); // set database host
+  define( 'DB_USER', USER ); // set database user
+  define( 'DB_PASS', PASSWORD ); // set database password
+  define( 'DB_NAME', DATABASE ); // set database name
+  define( 'DISPLAY_DEBUG', true ); //display db errors?
+
+  //Initiate the class
+  $database = new DB();
+
 
 ?>

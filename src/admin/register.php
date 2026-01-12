@@ -10,13 +10,15 @@ sec_session_start();
 
 if(login_check($mysqli) == true) {
  
-$usrListeTxt = "";
+$table = $GLOBALS['mTable'];
 $sql = <<<SQLTXT
   SELECT
     `username`,
     `email`
-  FROM `1_members`
+  FROM `$table`
 SQLTXT;
+
+$usrListeTxt = '';
 
 if( $database->num_rows( $sql ) > 0 ) {
   $usrListeTxt .= "<tbody>";
@@ -39,11 +41,11 @@ if( $database->num_rows( $sql ) > 0 ) {
   $cFirma   = "Monacor Danmark A/S";
   $topmenu  = 'admin';
 
-  include "inc/html_top.php";
+  include "../inc/html_top.php";
 
-  include "inc/register_mid.php";
+  include "../inc/register_mid.php";
 
-  include "inc/html_bottom.php";
+  include "../inc/html_bottom.php";
 } else { 
   echo "<p>You are not authorized to access this page, please login.</p>";
   header("Refresh: 2; url=index.php");

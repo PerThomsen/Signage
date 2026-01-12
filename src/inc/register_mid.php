@@ -10,11 +10,6 @@
             <tr>
               <th>User</th>
               <th>Mail</th>
-              <th>LangId</th>
-              <th>Change language</th>
-              <th>Administrator</th>
-              <th>Edit Menu</th>
-              <th>Edit Artikel</th>
             </tr>
           </thead>  
           <?php echo $usrListeTxt; ?>          
@@ -73,74 +68,7 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="form-group form-group-sm">            
-                <label class="col-sm-5 control-label" for="chLang">
-                  Change language
-                </label>
-                <div class="col-sm-7">
-                  <select name="chLang" id="chLang">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group form-group-sm">            
-                <label class="col-sm-5 control-label" for="editMenu">
-                  Edit menu
-                </label>
-                <div class="col-sm-7">
-                  <select name="editMenu" id="editMenu">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group form-group-sm">            
-                <label class="col-sm-5 control-label" for="editArt">
-                  Edit Org. Artikel
-                </label>
-                <div class="col-sm-7">
-                  <select name="editArt" id="editArt">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group form-group-sm">            
-                <label class="col-sm-5 control-label" for="admin">
-                  Administrator
-                </label>
-                <div class="col-sm-7">
-                  <select name="admin" id="admin">
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group form-group-sm">            
-                <label class="col-sm-5 control-label" for="languageId">
-                  Select language
-                </label>
-                <div class="col-sm-7">
-                  <?php echo $selector; ?>
-                </div>
-              </div>
-            </div>
-
-                                       
+                                     
             <div class="row">
               <div class="form-group form-group-sm">            
                 <div class="col-sm-5">
