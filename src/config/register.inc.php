@@ -1,10 +1,10 @@
 <?php
 //include_once 'db_connect.php';
-require_once("config/init.php");
-include_once 'psl-config.php';
+//require_once("../config/init.php");
  
 $error_msg = "";
-$mysqli = new mysqli('localhost', 'monacor', 'mona5800', 'media');
+//$mysqli = new mysqli('localhost', 'monacor', 'mona5800', 'media');
+//$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
  
 if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['languageId'])) {
     // Sanitize and validate the data passed in
@@ -80,7 +80,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'], $_POST['languageId']
         $password    = hash('sha512', $password . $random_salt);
  
         // Insert the new user into the database 
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO 1_members (username, email, password, salt, languageId, changeLanguage, admin, editMenu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO split_admins (username, email, password, salt, languageId, changeLanguage, admin, editMenu) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssssssss', $username, $email, $password, $random_salt, $languageId, $chLang, $admin, $editMenu);
             // Execute the prepared query.
             if (! $insert_stmt->execute()) {
