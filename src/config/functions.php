@@ -5,7 +5,7 @@
    http://cryptojs.altervista.org/hash/doc/doc_hash_pajs.html
 */
 
-include_once 'psl-config.php';
+//include_once 'psl-config.php';
 
 function getAddress() {
   $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
@@ -56,8 +56,8 @@ function sec_session_start() {
 }
 function login($email, $password, $mysqli) {
     // Using prepared statements means that SQL injection is not possible. 
-    if ($stmt = $mysqli->prepare("SELECT id, username, password, salt, languageId, changeLanguage, admin, editMenu, editArtikel   
-        FROM 1_members
+    if ($stmt = $mysqli->prepare("SELECT id, username, password, salt   
+        FROM ".$GLOBALS['mTable']."
        WHERE email = ?
         LIMIT 1")) {
         $stmt->bind_param('s', $email);  // Bind "$email" to parameter.
@@ -65,7 +65,7 @@ function login($email, $password, $mysqli) {
         $stmt->store_result();
  
         // get variables from result.
-        $stmt->bind_result($user_id, $username, $db_password, $salt, $sprogId, $chLang, $admin, $editMenu, $editArt);
+        $stmt->bind_result($user_id, $username, $db_password, $salt);
         $stmt->fetch();
  
         // hash the password with the unique salt.
@@ -95,11 +95,6 @@ function login($email, $password, $mysqli) {
                     $_SESSION['username'] = $username;
                     $_SESSION['login_string'] = hash('sha512', 
                               $password . $user_browser);
-                    $_SESSION['languageId'] = $sprogId;
-                    $_SESSION['chLang']     = $chLang;
-                    $_SESSION['admin']      = $admin;
-                    $_SESSION['editMenu']   = $editMenu;
-                    $_SESSION['editArt']   = $editArt;
                     
                     // Login successful.
                     return true;
@@ -107,7 +102,7 @@ function login($email, $password, $mysqli) {
                     // Password is not correct
                     // We record this attempt in the database
                     $now = time();
-                    $mysqli->query("INSERT INTO 1_login_attempts(user_id, time)
+                    $mysqli->query("INSERT INTO ".$GLOBALS['aTable'] ."(user_id, time)
                                     VALUES ('$user_id', '$now')");
                     return false;
                 }
@@ -126,7 +121,7 @@ function checkbrute($user_id, $mysqli) {
     $valid_attempts = $now - (2 * 60 * 60);
  
     if ($stmt = $mysqli->prepare("SELECT time 
-                             FROM 1_login_attempts 
+                             FROM ".$GLOBALS['aTable'] ." 
                              WHERE user_id = ? 
                             AND time > '$valid_attempts'")) {
         $stmt->bind_param('i', $user_id);
@@ -157,7 +152,7 @@ function login_check($mysqli) {
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
         if ($stmt = $mysqli->prepare("SELECT password 
-                                      FROM 1_members 
+                                      FROM ".$mTable." 
                                       WHERE id = ? LIMIT 1")) {
             // Bind "$user_id" to parameter. 
             $stmt->bind_param('i', $user_id);
@@ -190,86 +185,5 @@ function login_check($mysqli) {
         return false;
     }
 }
-function esc_url($url) {
- 
-    if ('' == $url) {
-        return $url;
-    }
- 
-    $url = preg_replace('|[^a-z0-9-~+_.?#=!&;,/:%@$\|*\'()\\x80-\\xff]|i', '', $url);
- 
-    $strip = array('%0d', '%0a', '%0D', '%0A');
-    $url = (string) $url;
- 
-    $count = 1;
-    while ($count) {
-        $url = str_replace($strip, '', $url, $count);
-    }
- 
-    $url = str_replace(';//', '://', $url);
- 
-    $url = htmlentities($url);
- 
-    $url = str_replace('&amp;', '&#038;', $url);
-    $url = str_replace("'", '&#039;', $url);
- 
-    if ($url[0] !== '/') {
-        // We're only interested in relative links from $_SERVER['PHP_SELF']
-        return '';
-    } else {
-        return $url;
-    }
-}
 
-function getMenu($type, $admShow, $menuEdit) {
-  global $mysqli, $filNavn, $sprogId;
-  $hideSearch = 0;
-  
-if ($type != '') {
-      $sql0 = "SELECT `hide_search` FROM `pt_menu` WHERE `url` = '$filNavn' LIMIT 1";
-      if ($res=mysqli_query($mysqli,$sql0)) { 
-        while ($row = mysqli_fetch_row($res)) {
-            $hideSearch = $row[0];
-        }
-      }
-      $menuTxt  = '';  
-      $sql = "SELECT * FROM `pt_menu` WHERE `enable` = 1 AND menu_type = '$type' AND rights_admin <= $admShow AND rights_menu <= $menuEdit ORDER BY menu_order";
-//"SELECT * FROM `pt_menu` WHERE `enable` = 1 AND menu_type = 'main' AND rights_admin <= $admShow AND (rights_menu = 0 AND rights_menu <> $menuEdit) ORDER BY menu_order";
-
-      //echo $sql."<br />";
-      if (($res=mysqli_query($mysqli,$sql)) && ($type !='none')) { 
-        $menuTxt .= '<nav class="navbar navbar-custom" role="navigation">';
-        //$menuTxt .= '  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
-        $menuTxt .= '    <ul class="nav navbar-nav">';
-         
-        while($row=mysqli_fetch_array($res,MYSQLI_ASSOC)) {      
-          if ( ($filNavn == $row['url']) ) {
-            $activTxt = ' active';
-          } else {
-            $activTxt = '';
-          }
-          if ($row['not_on_default'] == 1 AND $sprogId == 0) {    
-            // Do nothing
-          } else {
-              $menuTxt .= '          ';
-              $menuTxt .= '<li class="nav-item'.$activTxt.'">';
-              if (($row['search'] == 1) && ($hideSearch == 0) ) {
-                $menuTxt .='<a data-toggle="modal" data-target="#searchModal" href="#">'.$row['icon'].'</a>';
-              }elseif (($row['pre_name']!="") && ($row['search'] != 1)) {
-                $menuTxt .= '<a class="nav-link" title="'.$row['alt_text'].'" href="'.$row['url'].'">'.$row['pre_name'].'&nbsp;'.$row['name'].'</a>';
-              } elseif ($row['search'] != 1) {
-                $menuTxt .= '<a class="nav-link" title="'.$row['alt_text'].'" href="'.$row['url'].'">'.$row['icon'].'&nbsp;'.$row['name'].'</a>';
-              }
-              $menuTxt .= '</li>';
-              $menuTxt .= "\r";
-          }
-        }
-        $menuTxt .= '    </ul>';
-        //$menuTxt .= '  </div>';
-        $menuTxt .= '</nav>';
-
-        echo $menuTxt;
-      }
-    }
-}
 ?>
