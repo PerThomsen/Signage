@@ -6,8 +6,6 @@ include_once $sti_til_fil.'/config/register.inc.php';
 
 sec_session_start();
 
-//$mysqli = new mysqli('localhost', 'monacor', 'mona5800', 'media');
-
 if(login_check($mysqli) == true) {
  
 $table = $GLOBALS['mTable'];
@@ -18,6 +16,7 @@ $sql = <<<SQLTXT
   FROM `$table`
 SQLTXT;
 
+$filNavn  = basename($_SERVER["SCRIPT_FILENAME"]);
 $usrListeTxt = '';
 
 if( $database->num_rows( $sql ) > 0 ) {
@@ -38,8 +37,7 @@ if( $database->num_rows( $sql ) > 0 ) {
   $filNavn  = basename($_SERVER["SCRIPT_FILENAME"]);
   $title    = "Secure Login";
   $pageName = "Register user";
-  $cFirma   = "Monacor Danmark A/S";
-  $topmenu  = 'admin';
+  $cFirma   = "Monacor International";
 
   include "../inc/html_top.php";
 
