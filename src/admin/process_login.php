@@ -4,7 +4,7 @@
   require_once("../config/init.php");
 
  
-sec_session_start(); // Our custom secure way of starting a PHP session.
+  sec_session_start(); // Our custom secure way of starting a PHP session.
 /*
 print_r($_POST);
 echo "<br />";
@@ -20,8 +20,8 @@ if (isset($_POST['email'], $_POST['password'])) {
         header('Location: start.php');
     } else {
         // Login failed 
-        echo "Ude";
-        //header('Location: ../index.php?error=1');
+        //echo "Ude";
+        header('Location: index.php?error=1');
     }
 } else {
     // The correct POST variables were not sent to this page. 
