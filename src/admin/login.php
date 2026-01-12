@@ -1,6 +1,5 @@
 <?php
   require_once("../config/init.php");
-  //include_once ("inc/functions.php");
 
 sec_session_start();
  
