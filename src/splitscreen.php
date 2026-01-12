@@ -44,7 +44,7 @@
                 <div class="box4">Vi arbejder hjemme i dag (kun hvis aktiv></div>
                 <p>&nbsp</p>
 
-                <?php include "inc/slider.php" ?>
+                <?php include "slider.php" ?>
                 <p>&nbsp;</p>
                 <h1 class="card-title">Kontaktinfo:</h1>
                 <p class="card-text">
