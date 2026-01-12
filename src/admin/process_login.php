@@ -5,16 +5,19 @@
 
  
 sec_session_start(); // Our custom secure way of starting a PHP session.
+/*
 print_r($_POST);
+echo "<br />";
+*/
  
 if (isset($_POST['email'], $_POST['password'])) {
     $email = $_POST['email'];
-    $password = $_POST['password']; // The hashed password.
+    $password = $_POST['p']; // The hashed password.
  
     if (login($email, $password, $mysqli) == true) {
         // Login success 
-        echo "Inde";
-        //header('Location: ../start.php');
+        //echo "Inde";
+        header('Location: start.php');
     } else {
         // Login failed 
         echo "Ude";
