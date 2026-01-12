@@ -2,13 +2,15 @@
 error_reporting(E_ALL);
 ini_set('display_errors','On');
 require_once("../config/init.php");
-include_once $sti_til_fil.'/config/register.inc.php';
 
 sec_session_start();
 
+$table = $GLOBALS['mTable'];
+include_once $sti_til_fil.'/config/register.inc.php';
+
 if(login_check($mysqli) == true) {
  
-$table = $GLOBALS['mTable'];
+
 $sql = <<<SQLTXT
   SELECT
     `username`,
