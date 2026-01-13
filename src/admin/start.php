@@ -12,8 +12,8 @@
 
     
   $title    = "Monacor media data";
-  $pageName = "Media database";
-  $cFirma   = "Monacor Danmark A/S";
+  $pageName = "Backend - Edit";
+  $cFirma   = "Monacor International";
 
   include "inc/html_top.php";
 
