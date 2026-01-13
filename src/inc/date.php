@@ -5,17 +5,49 @@ $date = new DateTime();
 $currentMonth = $date->format('m');
 $currentYear = $date->format('Y');
 $numDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+?>
+<table>
+  <tr>'
+    <th>Sun</th>
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+  </tr>
 
-echo '<table>'
-;echo '<tr>';
-echo '<th>Sun</th>';
-echo '<th>Mon</th>';
-echo '<th>Tue</th>';
-echo '<th>Wed</th>';
-echo '<th>Thu</th>';
-echo '<th>Fri</th>';
-echo '<th>Sat</th>';
-echo '</tr>';
+<?php
+$table = $GLOBALS['cTable'];
+$sql = <<<SQLTXT
+  SELECT
+    `cat_id`,
+    `cat_txt`
+  FROM `$table`
+SQLTXT;
+
+$cat = array();
+if( $database->num_rows( $sql ) > 0 ) {
+  $results = $database->get_results( $sql );
+  foreach( $results as $row ) {
+    $cId    = $row["cat_id"];
+    $cTxt   = $row["cat_txt"];
+    $cat[$cId] = $cTxt;
+  }
+}
+
+$table = $GLOBALS['dTable'];
+$sql = <<<SQLTXT
+  SELECT 
+    `id`, 
+    `creation_time`, 
+    `due_date`, 
+    `category_id`, 
+    `headertxt`, 
+    `body_text` 
+  FROM `$table`
+  WHERE `category_id` = 1
+SQLTXT;
 
 for ($i = 1; $i <= $numDays; $i++) {
   $dayOfWeek = date('w', strtotime("$currentYear-$currentMonth-$i"));
@@ -25,11 +57,12 @@ for ($i = 1; $i <= $numDays; $i++) {
       echo '<td></td>';
     }
   }
-  echo '<td>' . $i . '</td>';
+  echo "<td>$i</td>";
   if ($dayOfWeek == 6 || $i == $numDays) {
     echo '</tr>';
   }
 }
 
-echo '</table>';
 ?>
+
+</table>
