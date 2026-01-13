@@ -44,7 +44,7 @@
                 <div class="box4">Vi arbejder hjemme i dag (kun hvis aktiv></div>
                 <p>&nbsp</p>
 
-                <?php include "slider.php" ?>
+                <?php include "inc/slider.php" ?>
                 <p>&nbsp;</p>
                 <h1 class="card-title">Kontaktinfo:</h1>
                 <p class="card-text">
@@ -106,10 +106,11 @@
           let hours = currentTime.getHours();
           //hours = hours % 12 || 12;
           const minutes = currentTime.getMinutes().toString().padStart(2, '0');
-          const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+          //const seconds = currentTime.getSeconds().toString().padStart(2, '0');
 
           // Construct the date and time string in the desired format.
-          const dateTimeString = `${dayOfWeek} ${day}. ${month} ${year} - ${hours}:${minutes}:${seconds}`;
+          //const dateTimeString = `${dayOfWeek} ${day}. ${month} ${year} - ${hours}:${minutes}:${seconds}`;
+          const dateTimeString = `${dayOfWeek} ${day}. ${month} ${year} - ${hours}:${minutes}`;
           clockElement.textContent = dateTimeString;
       }
 
