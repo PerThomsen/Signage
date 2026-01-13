@@ -19,11 +19,11 @@ if (login_check($mysqli) == true) {
   $admShow  = '';
   $menuEdit = '';
 
-  include "../inc/html_top.php";
+  include "inc/html_top.php";
   
 
-  include "../inc/login_mid.php";
+  include "inc/login_mid.php";
 
-  include "../inc/html_bottom.php";
+  include "inc/html_bottom.php";
 
 ?>

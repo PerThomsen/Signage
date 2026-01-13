@@ -15,10 +15,10 @@
   $pageName = "Media database";
   $cFirma   = "Monacor Danmark A/S";
 
-  include "../inc/html_top.php";
+  include "inc/html_top.php";
 
   include "inc/start_mid.php";
 
-  include "../inc/html_bottom.php";
+  include "inc/html_bottom.php";
 
 ?>

@@ -41,11 +41,11 @@ if( $database->num_rows( $sql ) > 0 ) {
   $pageName = "Register user";
   $cFirma   = "Monacor International";
 
-  include "../inc/html_top.php";
+  include "inc/html_top.php";
 
-  include "../inc/register_mid.php";
+  include "inc/register_mid.php";
 
-  include "../inc/html_bottom.php";
+  include "inc/html_bottom.php";
 } else { 
   echo "<p>You are not authorized to access this page, please login.</p>";
   header("Refresh: 2; url=index.php");
