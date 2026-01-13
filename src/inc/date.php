@@ -6,8 +6,8 @@ $currentMonth = $date->format('m');
 $currentYear = $date->format('Y');
 $numDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
 
-echo '<table>';
-echo '<tr>';
+echo '<table>'
+;echo '<tr>';
 echo '<th>Sun</th>';
 echo '<th>Mon</th>';
 echo '<th>Tue</th>';
