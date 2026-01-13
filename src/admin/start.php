@@ -17,7 +17,7 @@
 
   include "../inc/html_top.php";
 
-  include "../inc/start_mid.php";
+  include "inc/start_mid.php";
 
   include "../inc/html_bottom.php";
 
