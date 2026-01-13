@@ -5,25 +5,11 @@
   include_once '../config/functions.php';
   sec_session_start();
 
-  //include 'inc/session_unset.php';
-
-/*
-echo "<pre>";
-echo print_r($_REQUEST);
-echo print_r($_SESSION);
-echo "</pre>";
-//*/  
-  
 
   if (!isset($_SESSION['login_string'])) {
     header("Location: index.php");
   }
 
-
-
-
-
-  //------------To-do list END -------------
     
   $title    = "Monacor media data";
   $pageName = "Media database";
