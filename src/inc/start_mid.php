@@ -6,9 +6,9 @@
 	      <div class="card-body">
 	        <div class="box1"><?php include_once '../inc/date.php';//Dynamisk kalender (kun hvis udfyldt>?></div>
 	        <p>&nbsp</p>
-	        <div class="box3">Besøg af (kun hvis udfyldt></div>
+	        <div class="box3"><?php echo "Besøg"//Besøg af (kun hvis udfyldt> ?></div>
 	        <p>&nbsp</p>
-	        <div class="box4">Vi arbejder hjemme i dag (kun hvis aktiv></div>
+	        <div class="box4"><?php echo "Hjemme"//Vi arbejder hjemme i dag (kun hvis aktiv>?></div>
 	        <p>&nbsp</p>
 	    </div>
 	</div>
