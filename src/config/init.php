@@ -6,7 +6,9 @@
   $GLOBALS['mTable'] = 'split_admins';
   $GLOBALS['aTable'] = 'split_login_attempts';
   $GLOBALS['dTable'] = 'split_data';  
-  $GLOBALS['cTable'] = 'split_category';  
+  $GLOBALS['cTable'] = 'split_category'; 
+  $GLOBALS['xTable'] = 'split_month';  
+
   //Find path
   $sti_til_fil = str_replace(basename(__DIR__),'', dirname(__FILE__));
   require_once($sti_til_fil."/config/class.db.php");
