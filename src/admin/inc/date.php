@@ -50,9 +50,9 @@ for ($i = 1; $i <= $numDays; $i++) {
   }
  
   if (in_array($i, $days)) {
-    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear'><strong>$i</strong></a></td>";
+    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=1'><strong>$i</strong></a></td>";
   } else {
-    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear'>$i</a></td>";
+    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=1'>$i</a></td>";
   }
 
   if ($dayOfWeek == 6 || $i == $numDays) {
