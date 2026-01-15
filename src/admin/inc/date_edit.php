@@ -4,39 +4,41 @@
   require_once("../../config/init.php");
   include_once '../../config/functions.php';
   sec_session_start();
-/*
+//*
 echo '<pre>';
 print_r($_REQUEST);
+print_r($_SESSION);
 echo '</pre>';
-*/
+//*/
+
 if (isset($_REQUEST['y'])) {
 	$dateTxtY = $_REQUEST['y'];
 	$dateTxtM = $_REQUEST['m'];
 	$dateTxtD = $_REQUEST['d'];
 	$dateTxt  = $dateTxtY.'-'.$dateTxtM.'-'.$dateTxtD;
 	$date = date_create($dateTxt);
-	echo date_format($date,"d/m/Y");
-	echo "<br />";
-	echo date('d/m/Y', time());
+	$thisDay = date_format($date,"d/m/Y");
+	echo $thisDay;
+	//echo "<br />";
+	//echo date('d/m/Y', time());
 }
 
 $table = $GLOBALS['cTable'];
 $sql = <<<SQLTXT
   SELECT
-    `cat_id`,
     `cat_txt`
   FROM `$table`
+  WHERE `cat_id` = 1
 SQLTXT;
 
-$cat = array();
+$cat = '';
 if( $database->num_rows( $sql ) > 0 ) {
   $results = $database->get_results( $sql );
   foreach( $results as $row ) {
-    $cId    = $row["cat_id"];
-    $cTxt   = $row["cat_txt"];
-    $cat[$cId] = $cTxt;
+    $cat = $row["cat_txt"];
   }
 }
+echo "<br />".$cat."<br />";
 
 $table = $GLOBALS['dTable'];
 $sql = <<<SQLTXT
