@@ -5,7 +5,7 @@ $date = new DateTime();
 $currentMonth = $date->format('m');
 $currentYear = $date->format('Y');
 $numDays = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
-$filNavn = 'inc/data_edit.php';
+$filnavn = 'inc/data_edit.php';
 ?>
 <table>
   <tr>
