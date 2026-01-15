@@ -5,13 +5,19 @@
   include_once '../config/functions.php';
   sec_session_start();
 
+/*
+  echo '<pre>';
+  print_r($_REQUEST);
+  print_r($_SESSION);
+  echo '</pre>';
+*/
 
   if (!isset($_SESSION['login_string'])) {
     header("Location: index.php");
   }
 
     
-  $title    = "Monacor media data";
+  $title    = "Monacor Split";
   $pageName = "Backend - Edit";
   $cFirma   = "Monacor International";
 
