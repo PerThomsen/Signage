@@ -17,11 +17,18 @@ if (isset($_SESSION['login_string'])) {
 /*/
 
   if (isset($_REQUEST['cat'])) {
-    $cat      = $_REQUEST['cat'];
+    $cat = $_REQUEST['cat'];
   	$dateTxtY = $_REQUEST['y'];
   	$dateTxtM = $_REQUEST['m'];
   	$dateTxtD = $_REQUEST['d'];
     $dateNew  = $_REQUEST['new'];
+
+    $_SESSION['y']   = $dateTxtY;
+    $_SESSION['m']   = $dateTxtM;
+    $_SESSION['d']   = $dateTxtD;
+    $_SESSION['new'] = $dateNew;
+    $_SESSION['cat'] =  $cat;
+
   	$dateTxt  = $dateTxtY.'-'.$dateTxtM.'-'.$dateTxtD;
   	$date = date_create($dateTxt);
   	$thisDay = date_format($date,"Y-m-d");
