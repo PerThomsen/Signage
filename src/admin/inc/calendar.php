@@ -8,7 +8,9 @@ if (isset($_SESSION['login_string'])) {
   if (isset($_REQUEST['m'])) {
     $currentMonth = $_REQUEST['m'];
     $currentYear  = $_REQUEST['y'];
-
+  } elseif (isset($_SESSION['m'])) {
+    $currentYear  = $_SESSION['y'];
+    $currentMonth = $_SESSION['m'];
   } else {
     $date = new DateTime();
     $currentMonth = $date->format('m');
@@ -32,11 +34,11 @@ SQLTXT;
   header('Location: login.php');
 }
 ?>
-<div class="col-sm-4">
+<div class="col-sm-12">
   <div class="row">
     <h2><?php echo $name; ?></h2>
-    <table>
-      <tr>
+    <table >
+      <tr clas='calendar'>
         <th>Sun</th>
         <th>Mon</th>
         <th>Tue</th>
@@ -71,7 +73,7 @@ $cal_data = '';
 for ($i = 1; $i <= $numDays; $i++) {
   $dayOfWeek = date('w', strtotime("$currentYear-$currentMonth-$i"));
   if ($i == 1) {
-    $cal_data .= '<tr>';
+    $cal_data .= "<tr>";
     //echo '<tr>';
     for ($j = 1; $j <= $dayOfWeek; $j++) {
       $cal_data .=  '<td></td>';
@@ -79,9 +81,9 @@ for ($i = 1; $i <= $numDays; $i++) {
   }
  
   if (in_array($i, $days)) {
-    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=1&new=0'><strong>$i</strong></a></td>";
+    $cal_data .= "<td><a class='tbl_no_line' href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=$grpId&new=0'><strong>$i</strong></a></td>";
   } else {
-    $cal_data .= "<td><a href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=1&new=1'>$i</a></td>";
+    $cal_data .= "<td><a class='tbl_no_line' href='$filnavn?d=$i&m=$currentMonth&y=$currentYear&cat=$grpId&new=1'>$i</a></td>";
   }
 
   if ($dayOfWeek == 6 || $i == $numDays) {
@@ -105,19 +107,24 @@ if ($prewMonth < 1) {
 ?>
     </table>
   </div>
+
 <?php
-  $navPrew = "&#8592;&nbsp;<a href='$startfil?m=$prewMonth&y=$prewYear&cat=1'>Prew</a>";
-  $navNext = "<a href='$startfil?m=$nextMonth&y=$nextYear&cat=1'>Next</a>&nbsp;&#8594;";
+  //$navPrew = "<a class='tbl_no_line' href='$startfil?m=$prewMonth&y=$prewYear&cat=1'>&#8592;&nbsp;Prew</a>";
+  //$navNext = "<a class='tbl_no_line' href='$startfil?m=$nextMonth&y=$nextYear&cat=1'>Next&nbsp;&#8594;</a>";
+  $navPrew = "$startfil?m=$prewMonth&y=$prewYear&cat=1";
+  $navNext = "$startfil?m=$nextMonth&y=$nextYear&cat=1";
 ?>
   <div class="row">
-    <div class="col-sm-3 text-left">
-      <?php echo $navPrew; ?>
-    </div>  
-    <div class="col-sm-6">
-      &nbsp;
-    </div>
-    <div class="col-sm-3 text-right">
-      <?php echo $navNext; ?>
-    </div>
+   <div class="col-sm-2 text-left">
+    &nbsp;
   </div>
+   <div class="col-sm-2 text-left">
+       <a href="<?php echo $navPrew; ?>" class="btn btn-primary" role="button">&#8592;&nbsp;Prew</a>
+     </div>
+    <div class="col-sm-6 text-left">
+       &nbsp;
+     </div>
+    <div class="col-sm-2 text-left">
+       <a href="<?php echo $navNext; ?>" class="btn btn-primary" role="button">Next&nbsp;&#8594;</a>
+    </div>  
 </div>
