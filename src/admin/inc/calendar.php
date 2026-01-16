@@ -55,7 +55,7 @@ $sql = <<<SQLTXT
   SELECT 
     `due_date`
   FROM `$table`
-  WHERE `category_id` = 1
+  WHERE `category_id` = $grpId
   AND EXTRACT(month FROM (due_date)) = $currentMonth
 SQLTXT;
 
