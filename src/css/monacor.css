@@ -34,3 +34,15 @@
 	border:1px solid #CF6766;
 	font-size:15px;				
 }
+
+a.tbl_no_line {
+	text-decoration: none; 
+  	font-size: 30px !important; /* Set the font size to 16 pixels */
+  	text-align: right !important;
+  	color: black;
+}
+table,th,td {
+  	font-size: 30px !important; /* Set the font size to 16 pixels */
+  	text-align: right !important;
+  	color: black;
+}
