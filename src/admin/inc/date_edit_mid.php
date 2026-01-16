@@ -35,6 +35,8 @@
             <input type="hidden" name="new" value="<?php echo $dateNew; ?>" />
             <input type="hidden" name="date" value="<?php echo $dateTxt; ?>" />
             <button name="Upd" type="submit" class="btn btn-primary">Save changes</button>
+            <input class="btn btn-primary" type="button" name="SubmitCancel" value="Cancel" onclick="cancelRedirect('start.php');" /> 
+            <a href="#" class="btn btn-danger" role="button">Delete</a>
           </form>
           <p>&nbsp</p>
         </div>
