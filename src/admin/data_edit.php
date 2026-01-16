@@ -29,9 +29,10 @@ if (isset($_SESSION['login_string'])) {
     $_SESSION['new'] = $dateNew;
     $_SESSION['cat'] =  $cat;
 
-  	$dateTxt  = $dateTxtY.'-'.$dateTxtM.'-'.$dateTxtD;
-  	$date = date_create($dateTxt);
+  	$dateTxt = $dateTxtY.'-'.$dateTxtM.'-'.$dateTxtD;
+  	$date    = date_create($dateTxt);
   	$thisDay = date_format($date,"Y-m-d");
+    $dayNice = date_format($date,"d-m-Y");
 
 $table = $GLOBALS['cTable'];
 $sql = <<<SQLTXT
@@ -61,13 +62,18 @@ $sql = <<<SQLTXT
   AND DATE(`due_date`) = DATE("$thisDay")
 SQLTXT;
 
+  $homeWork = 0;
+  $headerTxt = 'No data';
+  $bodyTxt   = 'No data';
   if ( $database->num_rows( $sql ) > 0 ) {
     list( $datId, $headerTxt, $bodyTxt ) = $database->get_row( $sql );
-  } else {
-    $headerTxt = 'No data';
-    $bodyTxt   = 'No data';
   }
-
+  if ($cat == 3) {
+    $homeWork = 1;
+    if (!$datId) {
+      $dateNew = 1;
+    }
+  }
 }
 
   $title    = "Monacor data";
