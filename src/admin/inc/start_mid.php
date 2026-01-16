@@ -4,9 +4,9 @@
 	  <div class="col-lg-12 mb-4 mx-auto">
 	    <div class="card border border-primary mon_border_style p-5">
 	      <div class="card-body">
-	        <div class="box1"><?php include_once 'inc/calendar.php';?></div>
+	        <div><?php include_once 'inc/calendar.php';?></div>
 	        <p>&nbsp</p>
-          	<select class='form-control' name='languageId' id='languageId' onchange='getSelVal(this);' class='languageId'>     
+          	<select class='form-control' name='catId' id='catId' onchange='getSelVal(this);' class='catId'>     
       			<?php include 'inc/selector_grp.php'; ?>
       		</select>      
       		<script type="text/javascript">
