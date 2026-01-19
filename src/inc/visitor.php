@@ -7,11 +7,11 @@
   */
 
 $thisDay = date("Y-m-d");
-$dayNice = date("d-m-Y");
-$dayNo   = date("N");
-$dayName = '';
+//$dayNice = date("d-m-Y");
+//$dayNo   = date("N");
+//$dayName = '';
 
-$dayName = dayName($dayNo);
+//$dayName = dayName($dayNo);
 
 $grpId = 2;
 $table = $GLOBALS['dTable'];
