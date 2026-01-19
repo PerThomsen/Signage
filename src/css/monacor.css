@@ -8,9 +8,9 @@
 	mdb-card-spacer-x: 3.5rem !important;
 }
 .box1 {
-	color:white;
-	background-color:#4ABDAC;
-	border:1px solid #4ABDAC;
+	color:black;
+	#background-color:#4ABDAC;
+	#border:1px solid #4ABDAC;
 	font-size:15px;				
 }
 
