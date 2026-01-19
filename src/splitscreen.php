@@ -35,13 +35,13 @@
               </div>
               <div class="card-body">
                 <p>&nbsp</p>
-                <div class="box2"><h1 id="real-time-clock"></h1></div>
+                <div class="box1"><h1 id="real-time-clock"></h1></div>
                 <p>&nbsp</p>
-                <div class="box1">Dynamisk kalender (kun hvis udfyldt></div>
+                <div class="box2"><?php include "inc/dyn_calendar.php" ?></div>
                 <p>&nbsp</p>
-                <div class="box3">Besøg af (kun hvis udfyldt></div>
+                <div class="box3"><?php include "inc/visitor.php" ?></div>
                 <p>&nbsp</p>
-                <div class="box4">Vi arbejder hjemme i dag (kun hvis aktiv></div>
+                <div class="box4"><?php include "inc/work_home.php" ?></div>
                 <p>&nbsp</p>
 
                 <?php include "inc/slider.php" ?>
