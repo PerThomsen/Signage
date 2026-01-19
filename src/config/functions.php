@@ -186,4 +186,58 @@ function login_check($mysqli) {
     }
 }
 
+function dayName($dayNo) {
+    switch ($dayNo) {
+      case '1':
+        $dayName = 'Mandag';
+        break;
+      case '2':
+        $dayName = 'Tirsdag';
+        break;
+      case '3':
+        $dayName = 'Onsdag';
+        break;
+      case '4':
+        $dayName = 'Torsdag';
+        break;
+      case '5':
+        $dayName = 'Fredag';
+        break;
+      case '6':
+        $dayName = 'Lørdag';
+        break;
+      case '7':
+        $dayName = 'Søndag';
+        break;
+      default:
+        $dayName = 'Error';
+    }
+    return $dayName;    
+}
+
+/** 
+ * create time range by CodexWorld
+ *  
+ * @param mixed $start start time, e.g., 7:30am or 7:30 
+ * @param mixed $end   end time, e.g., 8:30pm or 20:30 
+ * @param string $interval time intervals, 1 hour, 1 mins, 1 secs, etc.
+ * @param string $format time format, e.g., 12 or 24
+ */ 
+function create_time_range($start, $end, $interval = '30 mins', $format = '12') {
+    $startTime = strtotime($start); 
+    $endTime   = strtotime($end);
+    $returnTimeFormat = ($format == '12')?'g:i A':'G:i';
+
+    $current   = time(); 
+    $addTime   = strtotime('+'.$interval, $current); 
+    $diff      = $addTime - $current;
+
+    $times = array(); 
+    while ($startTime < $endTime) { 
+        $times[] = date($returnTimeFormat, $startTime); 
+        $startTime += $diff; 
+    } 
+    $times[] = date($returnTimeFormat, $startTime); 
+    return $times; 
+}
 ?>
