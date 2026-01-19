@@ -19,15 +19,33 @@ if (!isset($_SESSION['login_string'])) {
 header("Location: index.php");
 }
 
-if (isset($_REQUEST['headerTxt'])) {
-	$datId     = $_REQUEST['datId'];
-	$catId     = $_REQUEST['catId'];
-	$headerTxt = $_REQUEST['headerTxt'];
-	$bodyTxt   = $_REQUEST['bodyTxt'];
-	$new       = $_REQUEST['new'];
-	$dateTxt   = $_REQUEST['date'];
+if (isset($_REQUEST['datId'])) {
+	$datId = $_REQUEST['datId'];
+	if (isset($_REQUEST['headerTxt'])) {
+		$catId     = $_REQUEST['catId'];
+		$headerTxt = $_REQUEST['headerTxt'];
+		$bodyTxt   = (isset($_REQUEST['bodyTxt'])?$_REQUEST['bodyTxt']:'');
+		$new       = $_REQUEST['new'];
+		$dateTxt   = $_REQUEST['date'];
+	}
 
-	if ($new == '1') {
+	if (isset($_REQUEST['delete']) && ($_REQUEST['delete'] == 1)) {
+		// Delet entry
+
+		$delete = array(
+		'id' => $datId
+		);
+
+		$deleted = $database->delete( $table, $delete, 1 );
+		if( $deleted ) {
+		  echo '<p>Successfully deleted from the database.</p>';
+		  header("Refresh: 2; URL=".$returnPage);
+		} else {
+		  echo '<p style="color:Tomato;>Error on deleting data</p>';
+		  header("Refresh: 5; URL=".$returnPage);
+		}
+
+	} elseif ($new == '1') {
 
 	    // Insert new data
       	$date = date_create($dateTxt);
@@ -40,6 +58,7 @@ if (isset($_REQUEST['headerTxt'])) {
 		    'body_text'   => $bodyTxt,
 		    'due_date'    => $thisDay
 	    );
+
 	    $add_query = $database->insert( $table, $indata );
 	    if( !$add_query ){
 	      echo '<p style="color:Tomato;>Fejl ved indsættelse af data</p>';
@@ -52,8 +71,6 @@ if (isset($_REQUEST['headerTxt'])) {
 		// Update data
 
 		$update = array(
-			//'datId'     => $datId,
-		    //'category_id' => $catId,
 		    'headertxt' => $headerTxt,
 		    'body_text' => $bodyTxt
 		);
