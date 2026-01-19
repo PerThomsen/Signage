@@ -22,11 +22,19 @@ header("Location: index.php");
 if (isset($_REQUEST['datId'])) {
 	$datId = $_REQUEST['datId'];
 	if (isset($_REQUEST['headerTxt'])) {
-		$catId     = $_REQUEST['catId'];
-		$headerTxt = $_REQUEST['headerTxt'];
-		$bodyTxt   = (isset($_REQUEST['bodyTxt'])?$_REQUEST['bodyTxt']:'');
-		$new       = $_REQUEST['new'];
-		$dateTxt   = $_REQUEST['date'];
+		$catId      = $_REQUEST['catId'];
+		$headerTxt  = $_REQUEST['headerTxt'];
+		$bodyTxt    = (isset($_REQUEST['bodyTxt'])?$_REQUEST['bodyTxt']:'');
+		$new        = $_REQUEST['new'];
+		$dateTxt    = $_REQUEST['date'];
+		$klokkeslet = (isset($_REQUEST['time_picker_'])?$_REQUEST['time_picker_']:"00:00");
+		
+		list($timer, $minuter) = explode(':', $klokkeslet);
+		list($dateTxtY, $dateTxtM, $dateTxtD) = explode('-', $dateTxt);
+	  	$dateTxt = $dateTxtY.'-'.$dateTxtM.'-'.$dateTxtD." ".$timer.":".$minuter;
+	  	$date    = date_create($dateTxt);
+	  	$thisDay = date_format($date,"Y-m-d H:i");
+
 	}
 
 	if (isset($_REQUEST['delete']) && ($_REQUEST['delete'] == 1)) {
@@ -47,10 +55,6 @@ if (isset($_REQUEST['datId'])) {
 
 	} elseif ($new == '1') {
 
-	    // Insert new data
-      	$date = date_create($dateTxt);
-  		$thisDay = date_format($date,"Y-m-d");
-
 	    $indata = array(
 			//'datId'     => $datId,
 		    'category_id' => $catId,
@@ -70,7 +74,9 @@ if (isset($_REQUEST['datId'])) {
 	} else {
 		// Update data
 
+	
 		$update = array(
+		    'due_date' => $thisDay,
 		    'headertxt' => $headerTxt,
 		    'body_text' => $bodyTxt
 		);
@@ -78,13 +84,13 @@ if (isset($_REQUEST['datId'])) {
 			'id' => $datId
 		);
 		
+		
 		$updated = $database->update( $table, $update, $where_clause, 1 );
 		
 		if( $updated ) {
 			echo '<p>Data successfully updated </p>';
 			header("Refresh: 2; URL=".$returnPage);
 	    }
-	    
     }
 
 }
