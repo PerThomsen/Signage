@@ -63,17 +63,36 @@ $sql = <<<SQLTXT
 SQLTXT;
 
   $homeWork = 0;
+  $visit    = 0;
   $headerTxt = 'No data';
   $bodyTxt   = 'No data';
   if ( $database->num_rows( $sql ) > 0 ) {
     list( $datId, $headerTxt, $bodyTxt ) = $database->get_row( $sql );
   }
+  
+  switch ($cat) {
+    case 2:
+      $visit = 1;
+      $times = create_time_range('7:30', '16:30', '15 mins', '24');
+      break;
+    case 3:
+      $homeWork = 1;
+      $visit = 0;
+      if (!$datId) {
+        $dateNew = 1;
+      }
+      break;
+  }
+  
+
+  /*
   if ($cat == 3) {
     $homeWork = 1;
     if (!$datId) {
       $dateNew = 1;
     }
   }
+  */
 }
 
   $title    = "Monacor data";
