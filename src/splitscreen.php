@@ -47,7 +47,7 @@
                 <p>&nbsp</p>
                 <div class="box1"><?php include "inc/visitor.php" ?></div>
                 <p>&nbsp</p>
-                <div class="box4"><?php include "inc/work_home.php" ?></div>
+                <div class="box1"><?php include "inc/work_home.php" ?></div>
                 <p>&nbsp</p>
 
                 <?php include "inc/slider.php" ?>
