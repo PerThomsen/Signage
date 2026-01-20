@@ -21,7 +21,7 @@ SQLTXT;
     $date      = date_create($due_date);
     $dayNice   = date_format($date,"d-m-Y");
 
-    echo "Vi arbejder hjemme i dag d. ".$dayNice;
+    echo "<h3>Vi arbejder hjemme i dag d. ".$dayNice."</h3";
   }
 
 ?>
