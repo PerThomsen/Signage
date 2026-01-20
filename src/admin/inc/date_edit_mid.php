@@ -34,7 +34,7 @@
                 <input <?php echo $homeWork?'':'hidden'; ?> type="checkbox" name="homeWork" value="yes" <?php echo (($homeWork==1)?'checked':''); ?> />
               </div>
               <div class="col-sm-7">
-                <select <?php echo "hidden"; ?> name="time_picker">
+                <select <?php echo $visit=1?'':'hidden'; ?> name="time_picker">
                     <option value="">Klokkesl&aelig;t</option>
                     <?php foreach($times as $key=>$val){ ?>
                     <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
