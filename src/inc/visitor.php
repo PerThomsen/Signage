@@ -42,9 +42,9 @@ SQLTXT;
     $bodyTst   = rtrim(ltrim($bodyTst,"p"),"p");
 
     // Show Body text if present
-    echo "<h3>";
+    echo "<h2>";
     echo $tidspunkt." - ".($headerTxt<>"No data"?$headerTxt:'')."<br />";
-    echo "</h3>";
+    echo "</h2>";
     if ($bodyTst != "No data") {
 	    echo "<p>"; 
 	    echo $bodyTxt;
