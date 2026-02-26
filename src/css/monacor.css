@@ -1,3 +1,9 @@
+h1 {
+	font-size: 60px;
+}
+h2 {
+	font-size: 40px;
+}
 .mon_border_style {
 	#border-style: solid;
 	#border-color: rgb(0, 86, 152);
