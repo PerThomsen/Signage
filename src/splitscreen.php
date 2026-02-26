@@ -24,7 +24,7 @@
     </header>
 
     <div class="min-vh-100 d-flex align-items-center justify-content-center">
-
+ 
 
   <!--Main layout-->
   <main class="my-2">
