@@ -4,6 +4,11 @@ h1 {
 h2 {
 	font-size: 40px;
 }
+h5 {
+	font-size: 60px;
+	text-align: left;
+
+}
 .mon_border_style {
 	#border-style: solid;
 	#border-color: rgb(0, 86, 152);
