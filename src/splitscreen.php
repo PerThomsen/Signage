@@ -34,12 +34,13 @@
       <section class="text-center">
 
         <div class="row">
-          <div class="col-lg-12 mb-4 mx-auto">
-            <div class="card border border-primary mon_border_style p-5">
+          <h5><strong>1. SAL</strong></h5>
+          <!--<div class="col-lg-12 mb-4 mx-auto">-->
+            <!--<div xclass="card border border-primary mon_border_style p-5"> -->
               <p>&nbsp;</p>
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-init data-mdb-ripple-color="light">  
+              <!--<div xclass="bg-image hover-overlay ripple" data2-mdb-ripple-init data-mdb-ripple-color="light">  -->
                 <img src="img/MI-Logo.png" class="img-fluid" />
-              </div>
+              <!-- </div> -->
               <div class="card-body">
                 <p>&nbsp</p>
                 <div class="box1"><h1 id="real-time-clock"></h1></div>
@@ -53,13 +54,14 @@
 
                 <?php include "inc/slider.php" ?>
                 <p>&nbsp;</p>
-                <h1 class="card-title">Kontaktinfo:</h1>
                 <p class="card-text">
-                <h3>Tlf. 44 34 90 00<br /> eller mail@monacor.dk<br />Pakker kan stilles i opgang under trappen</h3>
+                <h1>Tel. 44 34 90 00<br /></h1>
+                <h1>Mail: mail@monacor.dk<br /></h1>
+                <h1>Pakker kan stilles i opgang under trappen</h1>
                 </p>
               </div>
-            </div>
-          </div>
+            <!-- </div> -->
+          <!--</div> -->
       </div>
 
 
@@ -68,17 +70,17 @@
       </div>
 
         <div class="row">
-          <div class="col-lg-12 mb-4 mx-auto">
-            <div class="card border border-danger mon_border_style ">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-init data-mdb-ripple-color="light">
-                <img class=".img-fluid. max-width: 300%; height: auto;" src="img/cornered.webp" class="img-fluid" />
+          <h5><strong>STUEN</strong></h5>
+          <!--<div class="col-lg-12 mb-4 mx-auto">
+            <div xclass="card border border-danger mon_border_style ">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-init data-mdb-ripple-color="light">-->
+                <img class=".img-fluid max-width: 300%; height: auto;" src="img/cornered.webp" class="img-fluid" />
               </div>
               <div class="card-body">
-                <h5 class="card-title">Kontakt info:</h5>
                 <p class="card-text">
-                  Mail: info@cornered.dk<br />
-                  Tel.: +45 4366 1088<br />
-                  Farum Gydevej 65, 3520 Farum, Denmark
+                  <h1>Tel.: +45 43 66 10 88<br /></h1>
+                  <h1>Mail: info@cornered.dk<br /></h1>
+                  <h1>Farum Gydevej 65, 3520 Farum, Denmark</h1>
                 </p>
               </div>
             </div>
