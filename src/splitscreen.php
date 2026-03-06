@@ -74,7 +74,7 @@
           <!--<div class="col-lg-12 mb-4 mx-auto">
             <div xclass="card border border-danger mon_border_style ">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-init data-mdb-ripple-color="light">-->
-                <img class=".img-fluid max-width: 300%; height: auto;" src="img/cornered.webp" class="img-fluid" />
+                <img class=".img-fluid max-width: 300%; height: auto;" src="img/Cornered.jpg" class="img-fluid" />
               </div>
               <div class="card-body">
                 <p class="card-text">
