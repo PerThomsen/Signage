@@ -55,7 +55,7 @@
                 <?php include "inc/slider.php" ?>
                 <p>&nbsp;</p>
                 <p class="card-text">
-                <h1>Tel. 44 34 90 00<br /></h1>
+                <h1>Tel. +45 44 34 90 00<br /></h1>
                 <h1>Mail: mail@monacor.dk<br /></h1>
                 <h1>Pakker kan stilles i opgang under trappen</h1>
                 </p>
