@@ -80,7 +80,7 @@
                 <p class="card-text">
                   <h1>Tel.: +45 43 66 10 88<br /></h1>
                   <h1>Mail: info@cornered.dk<br /></h1>
-                  <h1>Farum Gydevej 65, 3520 Farum, Denmark</h1>
+                  <h1>Farum Gydevej 65, 3520 Farum</h1>
                 </p>
               </div>
             </div>
