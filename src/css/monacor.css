@@ -1,11 +1,11 @@
 h1 {
-	font-size: 60px;
+	font-size: 50px;
 }
 h2 {
 	font-size: 40px;
 }
 h5 {
-	font-size: 60px;
+	font-size: 50px;
 	text-align: left;
 
 }
@@ -56,4 +56,9 @@ table,th,td {
   	font-size: 30px !important; /* Set the font size to 16 pixels */
   	text-align: right !important;
   	color: black;
+}
+
+.img-max {
+  max-width: 1200px;
+  /*width:100%;*/
 }
